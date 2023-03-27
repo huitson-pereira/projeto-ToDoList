@@ -14,8 +14,9 @@ function App() {
     setListaDeTarefas([listaDeTarefas, tarefaNova]);
   }
 
-  function removerTarefa(){
-
+  function removerTarefa(id){
+      const newList = listaDeTarefas.filter(tarefa => tarefa.id !== id)
+      setListaDeTarefas(newList)
   }
   
   return (
