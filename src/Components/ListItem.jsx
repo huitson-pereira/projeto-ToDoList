@@ -1,7 +1,7 @@
 import { useState } from "react";
 
-function ListItem(props){
-    const [finalizado, setFinalizado] = useState(props.tarefa.finalizado);
+function ListItem({tarefa, removerTarefa}){
+    const [finalizado, setFinalizado] = useState(tarefa.finalizado);
 
     function finalizarTarefa(){
         setFinalizado(!finalizado);
@@ -9,6 +9,7 @@ function ListItem(props){
 
     return
         <div>
+            
             <button onClick={finalizarTarefa}>Finalizar tarefa</button>
         </div>
 

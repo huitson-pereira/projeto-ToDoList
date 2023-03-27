@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import './App.css'
-import './Components/CardAdicionar'
+import CardAdicionar from './Components/CardAdicionar';
+import ListItem from './Components/ListItem';
 
 function App() {
   const [listaDeTarefas, setListaDeTarefas] = useState([]);
@@ -12,9 +13,17 @@ function App() {
     }
     setListaDeTarefas([listaDeTarefas, tarefaNova]);
   }
+
+  function removerTarefa(){
+
+  }
   
   return (
     <div className="App">
+      
+      {listaDeTarefas.map(tarefa => (
+                <ListItem tarefa={tarefa} removerTarefa={removerTarefa} />
+            ))}
       <p>Criação do projeto</p>   
     </div>
   )
