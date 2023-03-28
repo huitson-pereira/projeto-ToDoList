@@ -5,13 +5,14 @@ import ListItem from './Components/ListItem';
 
 function App() {
   const [listaDeTarefas, setListaDeTarefas] = useState([]);
-  function adicionarTarefa(){
+  
+  function adicionarTarefa(texto){
     const tarefaNova = {
       id: listaDeTarefas.length + 1,
-      texto: "",
+      texto: texto,
       finalizado: false,
     }
-    setListaDeTarefas([listaDeTarefas, tarefaNova]);
+    setListaDeTarefas([...listaDeTarefas, tarefaNova]);
   }
 
   function removerTarefa(id){
@@ -20,13 +21,19 @@ function App() {
   }
   
   return (
-    <div className="App">
-      
-      {listaDeTarefas.map(tarefa => (
-                <ListItem tarefa={tarefa} removerTarefa={removerTarefa} />
-            ))}
-      <p>Criação do projeto</p>   
-    </div>
+    <div>
+      <div>
+        <p>Lista de tarefas á fazer</p>
+      </div>
+      <div>
+        <CardAdicionar adicionarTarefa={adicionarTarefa}/>
+      </div>
+      <div className='divListItem'>
+      {listaDeTarefas.map(tarefa =>(
+        <ListItem tarefa={tarefa} removerTarefa={removerTarefa}/>
+        ))}
+      </div>
+  </div>
   )
 }
 
